@@ -53,6 +53,32 @@ rescue LoadError
 end
 end
 
+namespace :oracle_dbpool do
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "trinidad_oracle_dbpool_extension"
+    gem.summary = %Q{Addon to support Oracle 10/11g database pools in Trinidad}
+    gem.description = %Q{Addon to support Oracle 10/11g database pools in Trinidad}
+    gem.email = "calavera@apache.org"
+    gem.homepage = "http://github.com/calavera/trinidad-dbpool"
+    gem.authors = ["David Calavera"]
+    gem.add_dependency "trinidad_dbpool"
+    gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_development_dependency 'mocha'
+
+    gem.files = FileList['lib/trinidad_oracle_dbpool_extension.rb',
+      'lib/trinidad_oracle_dbpool_extension/oracle_webapp_extension.rb',
+      #'trinidad-libs/ojdbc6.jar',
+      'LICENSE', 'README.rdoc', 'VERSION']
+    gem.has_rdoc = false
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+end
+end
+
 namespace :postgresql_dbpool do
 begin
   require 'jeweler'
